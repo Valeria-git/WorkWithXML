@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           targetNamespace="http://bsuir.by/Bookshop"
+           xmlns:books="http://bsuir.by/Bookshop"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="books" type="books:book"/>
+
+    <xs:complexType name="book">
+        <xs:sequence>
+            <xs:element name="book" type="books:fields" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="fields">
+        <xs:sequence>
+            <xs:element type="xs:string" name="name"/>
+            <xs:element type="xs:string" name="author"/>
+            <xs:element type="books:BookType" name="genre"/>
+            <xs:element type="xs:int" name="price"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="BookType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Novel"/>
+            <xs:enumeration value="Detective"/>
+            <xs:enumeration value="Fantasy"/>
+            <xs:enumeration value="FairyTale"/>
+            <xs:enumeration value="SciFi"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+</xs:schema>
